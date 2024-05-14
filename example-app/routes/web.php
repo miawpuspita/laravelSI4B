@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\ProdiController;
+
 // jika tidak ada maka muncul error
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +40,5 @@ Route::get('listdata',function() {
 
 route::resource('fakultas',
 FakultasController::class);
+route::resource('prodi',
+ProdiController::class);
