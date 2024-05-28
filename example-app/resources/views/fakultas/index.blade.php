@@ -11,6 +11,7 @@
                   <p class="card-description">
                     list data fakultas
                   </p>
+                  <a href ="{{route ('fakultas.create') }}" class="btn btn-rounded btn_primary">Tambah</a>
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
