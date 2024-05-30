@@ -8,16 +8,16 @@
 
    <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Tambah Fakultas</h4>
+                  <h4 class="card-title">Tambah prodi</h4>
                   <p class="card-description">
-                    Formulir tambah fakultas
+                    Formulir tambah program prodi
                   </p>
-                  <form method="POST" action= "{{ route('fakultas.store') }}" class="forms-sample">
+                  <form method="POST" action= "{{ route('prodi.store') }}" class="forms-sample">
                     <div class="form-sample">
                         @csrf
                     <div class="form-group">
-                      <label for="nama">Nama Fakultas</label>
-                      <input type="text" class="form-control" name="nama" value="{{old('nama')}}" placeholder="Nama Fakultas">
+                      <label for="nama">Nama Program Prodi</label>
+                      <input type="text" class="form-control" name="nama" value="{{old('nama')}}" placeholder="Nama program prodi">
                       @error('nama')
                           <span class="text-danger">{{$message}} </span>
                       @enderror
@@ -27,7 +27,7 @@
                       <input type="text" class="form-control" name="singkatan" placeholder="FIKR,FEB, ....">
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <a href="{{ url('fakultas')}}" class="btn btn-light">Batal</a>
+                    <a href="{{ url('program studi')}}" class="btn btn-light">Batal</a>
                   </form>
                 </div>
               </div>

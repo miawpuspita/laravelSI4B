@@ -11,6 +11,8 @@
                   <h4 class="card-title">Prodi</h4>
                   <p class="card-description">
                     List Data Prodi
+                    <a href="{{route('prodi.create')}}" class="btn btn-rounded btn-primary">Tambah</a>
+                  </p>
                   </p>
                   <div class="table-responsive">
                     <table class="table">
@@ -33,4 +35,13 @@
                 </div>
               </div>
             </div>
+              <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+              Swal.fire({
+                title: "Good job!",
+                text: "You clicked the button!",
+               icon: "success"
+              });
+
+            </script>
 @endsection
