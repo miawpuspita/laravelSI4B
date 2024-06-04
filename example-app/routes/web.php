@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\MahasiswaController;
 
 // jika tidak ada maka muncul error
 use Illuminate\Support\Facades\Route;
@@ -42,3 +43,5 @@ route::resource('fakultas',
 FakultasController::class);
 route::resource('prodi',
 ProdiController::class);
+route::resource('mahasiswa',
+MahasiswaController::class);

@@ -76,3 +76,4 @@ class FakultasController extends Controller
         //
     }
 }
+
