@@ -18,12 +18,10 @@
                       <thead>
                         <tr>
                           <th>NPM</th>
-                          <th>Nama Mahasiswa</th>
-                          <th>Tempat Lahir</th>
-                          <th>Tanggal Lahir</th>
-                          <th>Alamat</th>
+                          <th>Nama </th>
+                          <th>foto</th>
                           <th>Prodi</th>
-                          <th>URL Foto</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
