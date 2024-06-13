@@ -23,9 +23,12 @@ class ProdiController extends Controller
      */
     public function create()
     {
+         return view('prodi.create');
         $fakultas = Fakultas::all();
         return view('prodi.create')->with('fakultas', $fakultas);
     }
+    $fakultas = fakultas::all();
+    return view('prodi.create')->with('fakultas', $fakultas);
 
     /**
      * Store a newly created resource in storage.
@@ -33,14 +36,18 @@ class ProdiController extends Controller
     public function store(Request $request)
     {
          $val = $request->validate([
-            'nama' => "required|unique:prodis",
-            'singkatan' => "required|max:2",
+            'nama' => "required|unique:fakultas",
+            'singkatan' => "required|max:4"
             'fakultas_id' => "required"
         ]);
     
 
     Prodi::create($val);
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 9bc1e05f6068226adacc9d041858fc48f1880447
     return redirect()->route('prodi.index')->with('success', $val['nama'].' berhasil disimpan');
     }
 

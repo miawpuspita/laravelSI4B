@@ -3,7 +3,7 @@
 @section('title','Dashboard')
 
 @section('content')
-<div class="row">
+<div class="row"> 
     <div class="col-lg-12">
         <h2>Dashboard</h2>
         {{--Html--}}
@@ -116,10 +116,10 @@
     series: [
         {
             name: 'Mahasiswa',
-            data: [
-                @foreach($mahasiswaprodi as $item)
-                {{ $item->jumlah}},
-                @endforeachaq
+            data: [ 
+                @foreach ($mahasiswaprodi as $item)
+                    {{ $item->jumlah}},
+                @endforeach
             ]
         }
     ]

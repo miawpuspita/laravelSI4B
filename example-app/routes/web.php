@@ -1,47 +1,31 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MahasiswaController;
-
-// jika tidak ada maka muncul error
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
+//
+Route::resource('fakultas', FakultasController::class);
+Route::resource('prodi', ProdiController::class);
+Route::resource('mahasiswa', MahasiswaController::class);
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
-route::get('about',function(){
-    return "halaman about";
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-route::get('profil',function(){
-    return view('profil');
-});
+require __DIR__.'/auth.php';
 
-// route dengan parameter
-Route::get('welcome/{salam}', function ($salam) {
-    // return 'selamat ' . $salam;
-    return view('salam')->with('viewsalam',$salam);
-});
-
-// route tanpa parameter listdata
-// terdapat array list
-Route::get('listdata',function() {
-    $list = ["sistem informasi","informatika","manajemen"];
-    $listmhs= [
-        ["npm"=> 001, "nama" => "ahmad"],
-        ["npm"=> 002, "nama" => "budi"]
-    ];
-    return view('listprodi')
-    -> with ('viewlist',$list)
-    -> with ('viewmhs',$listmhs);
-});
-
-route::resource('fakultas',
-FakultasController::class);
-route::resource('prodi',
-ProdiController::class);
-route::resource('mahasiswa',
-MahasiswaController::class);
