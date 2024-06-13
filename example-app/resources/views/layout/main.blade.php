@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>@yield('title')</title>
   <!-- base:css -->
-  <link rel="stylesheet" href="{{url ('vendors/mdi/css/materialdesignicons.min.css')}}">
-  <link rel="stylesheet" href="{{url ('vendors/css/vendor.bundle.base.css')}}">
+  <link rel="stylesheet" href="{{ url('vendors/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{ url('vendors/css/vendor.bundle.base.css')}}">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="{{url ('css/style.css')}}">
+  <link rel="stylesheet" href="{{ url('css/style.css')}}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{url ('images/favicon.png')}}" />
+  <link rel="shortcut icon" href="{{ url('images/favicon.png')}}" />
 </head>
 <body>
   <div class="container-scroller d-flex">
@@ -27,36 +27,27 @@
           <span></span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('dashboard')}}">
+          <a class="nav-link" href="{{url('dashboard')}}">
             <i class="mdi mdi-view-quilt menu-icon"></i>
             <span class="menu-title">Dashboard</span>
-            <div class="badge badge-info badge-pill">2</div>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('fakultas')}}">
+          <li class="nav-item">
+          <a class="nav-link" href="{{url('fakultas')}}">
             <i class="mdi mdi-bank menu-icon"></i>
             <span class="menu-title">Fakultas</span>
-            <div class="badge badge-info badge-pill">2</div>
           </a>
         </li>
-<<<<<<< HEAD
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('prodi')}}">
-            <i class="mdi mdi-bank menu-icon"></i>
+          <a class="nav-link" href="{{url('prodi')}}">
+            <i class="mdi mdi-book-open-variant menu-icon"></i>
             <span class="menu-title">Prodi</span>
-            <div class="badge badge-info badge-pill">2</div>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('Mahasiswa')}}">
-=======
-         <li class="nav-item">
-          <a class="nav-link" href="{{ url('mahasiswa')}}">
->>>>>>> 9bc1e05f6068226adacc9d041858fc48f1880447
-            <i class="mdi mdi-bank menu-icon"></i>
+          <a class="nav-link" href="{{url('mahasiswa')}}">
+            <i class="mdi mdi-account-box menu-icon"></i>
             <span class="menu-title">Mahasiswa</span>
-            <div class="badge badge-info badge-pill">2</div>
           </a>
         </li>
         <li class="nav-item sidebar-category">
@@ -146,8 +137,8 @@
             <span class="mdi mdi-menu"></span>
           </button>
           <div class="navbar-brand-wrapper">
-            <a class="navbar-brand brand-logo" href = "index.html"><img src="{{ url ('images/logo.svg')}}" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href = "index.html"><img src="{{ url ('images/logo-mini.svg')}}" alt="logo"/></a>
+            <a class="navbar-brand brand-logo" href="index.html"><img src="{{ url('images/logo.svg')}}" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ url('images/logo-mini.svg')}}" alt="logo"/></a>
           </div>
           <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, {{ auth()->user()->name }}</h4>
           <ul class="navbar-nav navbar-nav-right">
@@ -163,7 +154,7 @@
                 <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="{{ url ('images/faces/face4.jpg') }}" alt="image" class="profile-pic">
+                      <img src="{{ url('images/faces/face4.jpg')}}" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal">David Grey
@@ -175,7 +166,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="{{ url ('images/faces/face2.jpg')}}" alt="image" class="profile-pic">
+                      <img src="{{ url('images/faces/face2.jpg')}}" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
@@ -187,7 +178,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="{{ url ('images/faces/face3.jpg')}}" alt="image" class="profile-pic">
+                      <img src="{{url('images/faces/face3.jpg')}}" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
@@ -263,24 +254,25 @@
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="{{ url ('images/faces/face5.jpg')}}" alt="profile"/>
-                <span class="nav-profile-name">{{ auth()->user()->name }}</span>
+                <img src="{{url('images/faces/face5.jpg')}}" alt="profile"/>
+                <span class="nav-profile-name"> {{ auth()->user()->name }}</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item">
                   <i class="mdi mdi-settings text-primary"></i>
                   Settings
                 </a>
-                <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                {{-- untuk membuat log out --}}
+                 <!-- Authentication -->
+                 <form method="POST" action="{{ route('logout') }}">
+                  @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="dropdown-item">
-                                <i class="mdi mdi-logout text-primary"></i>{{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
+                  <x-dropdown-link :href="route('logout')"
+                          onclick="event.preventDefault();
+                                      this.closest('form').submit();" class="dropdown-item">
+                       <i class="mdi mdi-logout text-primary"></i>{{ __('Log Out') }}
+                  </x-dropdown-link>
+              </form>
               </div>
             </li>
             <li class="nav-item">
@@ -304,7 +296,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-         @yield('content')
+          @yield('content')
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:./partials/_footer.html -->
@@ -328,21 +320,8 @@
   <!-- container-scroller -->
 
   <!-- base:js -->
-  <script src="{{ url ('vendors/js/vendor.bundle.base.js')}}"></script>
+  <script src="{{ url('vendors/js/vendor.bundle.base.js')}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
-  <script src="{{ url ('vendors/chart.js/Chart.min.js')}}"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="{{ url('js/off-canvas.js')}}"></script>
-  <script src="{{ url('js/hoverable-collapse.js')}}"></script>
-  <script src="{{ url('js/template.js')}}"></script>
-  <!-- endinject -->
-  <!-- plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- Custom js for this page-->
-  <script src="{{ url('js/dashboard.js')}}"></script>
-  <!-- End custom js for this page-->
-</body>
-
-</html>
+  <script src="{{ url('urlvendors/chart.js/Chart.min.js')}}"></script
+...

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('prodis', function (Blueprint $table) {
             $table->id();
-            $table->String('nama',45);
-            $table->String('singkatan',4);
-            $table->foreignId('fakultas_id')->constrained();//relasi kekolom id pd tabel fakultas
+            $table->string('nama', 45);
+            $table->string('singkatan', 2);
+            $table->foreignId('fakultas_id')->constrained(); // relasi kekolom id pd tabel fakultas
             $table->timestamps();
         });
     }

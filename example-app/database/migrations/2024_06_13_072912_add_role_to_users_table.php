@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fakultas', function (Blueprint $table) {
-            $table->id(); // id integer autoincrement (1, 2, 3, dst)
-            $table->String('nama',45);
-            $table->String('singkatan',4);
-            $table->timestamps(); // created_at dan updated_at
+        Schema::table('users', function (Blueprint $table) {
+            $table->char('role',1)->default('D')->after('name');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fakultas');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

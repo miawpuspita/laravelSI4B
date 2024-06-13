@@ -1,4 +1,4 @@
-extends('layout.main')
+@extends('layout.main')
 
 @section('title','Tambah Mahasiswa')
 
@@ -12,7 +12,7 @@ extends('layout.main')
             <p class="card-description">
               Formulir tambah Mahasiswa
             </p>
-            <form method="POST" action="{{ route('mahasiswa.store')}}" class ="forms-sample" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('mahasiswa.store')}}" class ="forms-sample" enctype="multipart/form-data"> 
             @csrf
             <div class="form-group">
                 <label for="nama">NPM</label>
@@ -78,4 +78,3 @@ extends('layout.main')
       </div>
 </div>
 @endsection
-

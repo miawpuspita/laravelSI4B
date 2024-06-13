@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('title', 'Prodi')
-
+    
 @section('content')
     <h1>UMDP</h1>
     <h2>Prodi</h2>
@@ -13,29 +13,31 @@
                     List Data Prodi
                     <a href="{{route('prodi.create')}}" class="btn btn-rounded btn-primary">Tambah</a>
                   </p>
-                  </p>
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>Nama Prodi</th>
+                          <th>Nama Program Studi</th>
                           <th>Singkatan</th>
                         </tr>
                       </thead>
                       <tbody>
                          @foreach ($prodi as $value)
-                            <tr>
-                                <td>{{ $value["nama"] }}</td>
+                            <tr> 
+                                <td>{{ $value["Nama Program Studi"] }}</td>
                                 <td>{{ $value["singkatan"] }} </td>
+                                <td>
+                                  {{ $value["fakultas"]["nama"]}}
+                                </td>
                             </tr>
-                        @endforeach
+                        @endforeach 
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
             </div>
-              <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
               Swal.fire({
                 title: "Good job!",

@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fakultas;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
-class FakultasController extends Controller
+class ProdiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $fakultas = Fakultas::all(); // select *from fakultas
-        return view('fakultas.index')
-                ->with('fakultas', $fakultas);
+        $prodi = Prodi::all();
+        return view('prodi.index')
+                ->with('prodi', $prodi);
+
     }
 
     /**
@@ -22,7 +24,8 @@ class FakultasController extends Controller
      */
     public function create()
     {
-         return view('fakultas.create');
+        $fakultas = Fakultas::all();
+        return view('prodi.create')->with('fakultas',$fakultas);
     }
 
     /**
@@ -30,24 +33,23 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-        //validasi
         $val = $request->validate([
-            'nama' => "required|unique:fakultas",
-            'singkatan' => "required|max:4"
+            'nama' => "required|unique:prodi", //artinya wajib isi
+            'singkatan' => "required|max:4",
+            'fakultas_id' => "required"
         ]);
-    
 
-    // simpan ke tabel fakultas
-    Fakultas::create($val);
+        // simpan tabel prodi
+        Prodi::create($val);
 
-    return redirect()->route('fakultas.index')->with('success', $val['nama'].' berhasil disimpan');
+        // radirect ke halaman list prodi
+        return redirect()->route('prodi.index')->with('success', $val['nama']. 'berhasil disimpan');
     }
-    
+
     /**
      * Display the specified resource.
      */
-    public function show(Fakultas $fakultas)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -55,7 +57,7 @@ class FakultasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fakultas $fakultas)
+    public function edit(Prodi $prodi)
     {
         //
     }
@@ -63,7 +65,7 @@ class FakultasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fakultas $fakultas)
+    public function update(Request $request, Prodi $prodi)
     {
         //
     }
@@ -71,7 +73,7 @@ class FakultasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fakultas $fakultas)
+    public function destroy(Prodi $prodi)
     {
         //
     }

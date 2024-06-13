@@ -1,5 +1,3 @@
-
-
 <?php
 
 namespace App\Http\Controllers;
@@ -134,3 +132,4 @@ class MahasiswaController extends Controller
         return redirect()->route('mahasiswa.index')->with('success',' Data berhasil dihapus.');
     }
 }
+
