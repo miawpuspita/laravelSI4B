@@ -38,10 +38,12 @@
                         <td>{{$item["alamat"]}}</td>
                         <td><img src="{{ url('foto/'.$item["url_foto"])}}"></td>
                         <td>
-                          <form action="{{route('mahasiswa.destroy', $item["id"])}}" method="post">
+                          @can ('update',$item)
+                          <form action="{{route('mahasiswa.destroy', $item["id"])}}" method="post" style="display: inline">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-sm btn-rounded btn-danger show_confirm" data-name="{{ $item["nama"]}}">Hapus</button>
+                            @endcan
                           <a href="{{route ('mahasiswa.edit', $item ["id"])}}"
                           class="btn btn-sm btn-rounded btn-warning">Ubah</a>
                         </td>
