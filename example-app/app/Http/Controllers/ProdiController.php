@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prodi;
 use App\Models\Fakultas;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class ProdiController extends Controller
@@ -13,9 +13,10 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        $prodi = Prodi::all(); // select *from fakultas
+        $prodi = Prodi::all();
         return view('prodi.index')
                 ->with('prodi', $prodi);
+
     }
 
     /**
@@ -23,32 +24,26 @@ class ProdiController extends Controller
      */
     public function create()
     {
-         return view('prodi.create');
         $fakultas = Fakultas::all();
-        return view('prodi.create')->with('fakultas', $fakultas);
+        return view('prodi.create')->with('fakultas',$fakultas);
     }
-    $fakultas = fakultas::all();
-    return view('prodi.create')->with('fakultas', $fakultas);
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-         $val = $request->validate([
-            'nama' => "required|unique:fakultas",
-            'singkatan' => "required|max:4"
+        $val = $request->validate([
+            'nama' => "required|unique:prodi", //artinya wajib isi
+            'singkatan' => "required|max:4",
             'fakultas_id' => "required"
         ]);
-    
 
-    Prodi::create($val);
-<<<<<<< HEAD
-    
-=======
+        // simpan tabel prodi
+        Prodi::create($val);
 
->>>>>>> 9bc1e05f6068226adacc9d041858fc48f1880447
-    return redirect()->route('prodi.index')->with('success', $val['nama'].' berhasil disimpan');
+        // radirect ke halaman list prodi
+        return redirect()->route('prodi.index')->with('success', $val['nama']. 'berhasil disimpan');
     }
 
     /**
