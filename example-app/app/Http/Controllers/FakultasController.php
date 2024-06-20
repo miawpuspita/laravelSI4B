@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fakultas;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\Response;
 class FakultasController extends Controller
 {
     /**
@@ -13,8 +13,8 @@ class FakultasController extends Controller
     public function index()
     {
         $fakultas = Fakultas::all(); // select *from fakultas
-        return view('fakultas.index')
-                ->with('fakultas', $fakultas);
+        return response()->json
+        ($fakultas, Response::HTTP_OK);
     }
 
     /**
@@ -30,7 +30,7 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->user()->cannot('create', 
+        if ($request->user()->cannot('create',
         Fakultas::class)){
             abort(403);
         }
@@ -40,14 +40,14 @@ class FakultasController extends Controller
             'nama' => "required|unique:fakultas",
             'singkatan' => "required|max:4"
         ]);
-    
+
 
     // simpan ke tabel fakultas
     Fakultas::create($val);
 
     return redirect()->route('fakultas.index')->with('success', $val['nama'].' berhasil disimpan');
     }
-    
+
     /**
      * Display the specified resource.
      */
